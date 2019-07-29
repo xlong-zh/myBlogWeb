@@ -17,7 +17,7 @@
           <i class="fs-24 iconfont iconshezhi pointer"></i>
         </router-link>
       </div>
-      <p class="fs-16 text-grey">obsessive,love code</p>
+      <p class="fs-16 text-grey">obsessive,love coding</p>
     </div>
   </div>
 </template>

@@ -2,6 +2,7 @@
   <div class="blog py-50 bg-white">
     <div v-for="(item,i) in model" :key="i">
       <Art :essay="item">555</Art>
+      <Art :essay="item">666</Art>
       <div class="border-bottom" style="width:500px;margin:0 auto;"></div>
     </div>
   </div>

@@ -8,6 +8,7 @@
       <div class="fs-20">{{essay.category.map(v=>v.name).join('/')}}</div>
       <div class="fs-20">{{essay.title}}</div>
       <div>{{essay.content}}</div>
+      <div>666</div>
     </div>
   </div>
 </template>

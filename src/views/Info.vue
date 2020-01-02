@@ -17,7 +17,7 @@
           <i class="fs-24 iconfont iconshezhi pointer"></i>
         </router-link>
       </div>
-      <p class="fs-16 text-grey">obsessive,love code</p>
+      <p class="fs-16 text-grey">obsessive,love coding</p>
     </div>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     async fetch() {
-      const res = await this.$http.get("/image/list");
+      const res = await this.$http.get('/image/list');
       this.image = res.data.map(v => v.img);
     }
   },
@@ -40,7 +40,7 @@ export default {
   }
 };
 </script>
-<style lang='scss'>
+<style lang="scss">
 .content {
   .info {
     margin: 0 auto;

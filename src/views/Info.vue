@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     async fetch() {
-      const res = await this.$http.get("/image/list");
+      const res = await this.$http.get('/image/list');
       this.image = res.data.map(v => v.img);
     }
   },
@@ -40,7 +40,7 @@ export default {
   }
 };
 </script>
-<style lang='scss'>
+<style lang="scss">
 .content {
   .info {
     margin: 0 auto;

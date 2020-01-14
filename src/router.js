@@ -1,10 +1,10 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
-import Info from './views/Info.vue'
-import Blog from './views/Blog.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from './views/Home.vue';
+import Info from './views/Info.vue';
+import Blog from './views/Blog.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 const router = new Router({
   // mode: 'history',
@@ -18,15 +18,15 @@ const router = new Router({
         {
           path: '/',
           name: 'info',
-          component: Info,
+          component: Info
         },
         {
           path: 'blog',
           name: 'blog',
-          component: Blog,
+          component: Blog
         }
       ]
-    },
+    }
     // {
     //   path: '/about',
     //   name: 'about',
@@ -36,6 +36,6 @@ const router = new Router({
     //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     // }
   ]
-})
+});
 
-export default router
+export default router;

@@ -37,11 +37,11 @@ export default {
       image: []
     };
   },
-  name: "home",
+  name: 'home',
   components: {},
   methods: {
     async fetch() {
-      const res = await this.$http.get("/image/list");
+      const res = await this.$http.get('/image/list');
       this.image = res.data.map(v => v.img);
     }
   },

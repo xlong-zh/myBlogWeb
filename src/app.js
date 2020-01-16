@@ -18,7 +18,7 @@ export function createApp() {
     store,
     render: h => h(App)
   });
-  return { app, router, store };
+  return { app, App, router, store };
 }
 
 // new Vue({

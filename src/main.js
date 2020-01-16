@@ -26,3 +26,8 @@ export function createApp() {
 //   store,
 //   render: h => h(App)
 // }).$mount('#app');
+// "serve:client": " vue-cli-service serve",
+// "build":"npm run build:server -- --silent && npm run build:client -- --no-clean --silent",
+// "build:client": "vue-cli-service build",
+// "build:server": "cross-env VUE_NODE=node vue-cli-service build",
+// "start:server": "cross-env NODE_ENV=production nodemon nodeScript/index"

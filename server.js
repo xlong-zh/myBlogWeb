@@ -3,19 +3,22 @@ const Koa = require('koa');
 const path = require('path');
 const koaStatic = require('koa-static');
 const app = new Koa();
-
-const resolve = file => path.resolve(__dirname, file);
-// 开放dist目录
-app.use(koaStatic(resolve('./dist')));
-
-// 第 2 步：获得一个createBundleRenderer
 const { createBundleRenderer } = require('vue-server-renderer');
-const bundle = require('./dist/vue-ssr-server-bundle.json');
-const clientManifest = require('./dist/vue-ssr-client-manifest.json');
+
+// 开放dist目录
+const resolve = file => path.resolve(__dirname, file);
+app.use(koaStatic(resolve('./dist')));
+let distPath = './dist';
+
+const bundle = require(`${distPath}/vue-ssr-server-bundle.json`);
+const clientManifest = require(`${distPath}/vue-ssr-client-manifest.json`);
+// const templateHtml = fs.readFileSync(path.resolve(__dirname, './src/index.temp.html'), 'utf-8')
+const templateHtml = fs.readFileSync(resolve('./src/index.temp.html'), 'utf-8');
+// 第 2 步：获得一个createBundleRenderer
 
 const renderer = createBundleRenderer(bundle, {
   runInNewContext: false,
-  template: fs.readFileSync(resolve('./src/index.temp.html'), 'utf-8'),
+  template: templateHtml,
   clientManifest: clientManifest
 });
 
@@ -34,6 +37,7 @@ app.use(async (ctx, next) => {
   };
   // 将 context 数据渲染为 HTML
   const html = await renderToString(context);
+  ctx.status = 200;
   ctx.body = html;
 });
 

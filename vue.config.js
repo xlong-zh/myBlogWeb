@@ -17,26 +17,27 @@ module.exports = {
   //基本路径
   publicPath: './',
   // 输出文件目录
-  outputDir: process.env.VUE_APP_CURRENTMODE === 'devtest' ? 'devtest' : 'dist',
-
+  outputDir: 'dist',
   css: {
-    extract: process.env.NODE_ENV === 'production'
+    extract: process.env.NODE_ENV === 'production',
+    sourceMap: true
   },
   configureWebpack: () => ({
     // 将 entry 指向应用程序的 server / client 文件
     entry: `./src/entry-${target}.js`,
-    // 对 bundle renderer 提供 source map 支持
+    // 需要开启source-map文件映射，因为服务器端在渲染时，
+    // 会通过Bundle中的map文件映射关系进行文件的查询
     devtool: 'source-map',
+    // 服务器端在Node环境中运行，需要打包为类Node.js环境可用包（使用Node.js require加载chunk）
+    // 客户端在浏览器中运行，需要打包为类浏览器环境里可用包
+    target: TARGET_NODE ? 'node' : 'web',
+    // 关闭对node变量、模块的polyfill
+    node: TARGET_NODE ? undefined : false,
     output: {
-      // 此处告知 server bundle 使用 Node 风格导出模块(Node-style exports)
+      // 配置模块的暴露方式，服务器端采用module.exports的方式，客户端采用默认的var变量方式
       libraryTarget: TARGET_NODE ? 'commonjs2' : undefined
     },
-    node: TARGET_NODE ? undefined : false,
-    target: TARGET_NODE ? 'node' : 'web',
-    // https://webpack.js.org/configuration/externals/#function
-    // https://github.com/liady/webpack-node-externals
-    // 外置化应用程序依赖模块。可以使服务器构建速度更快，
-    // 并生成较小的 bundle 文件。
+    // 外置化应用程序依赖模块。可以使服务器构建速度更快
     externals: TARGET_NODE
       ? nodeExternals({
           // 不要外置化 webpack 需要处理的依赖模块。
@@ -48,10 +49,12 @@ module.exports = {
     optimization: {
       splitChunks: TARGET_NODE ? false : undefined
     },
+    // 根据之前配置的环境变量判断打包为客户端/服务器端Bundle
     plugins: [TARGET_NODE ? new VueSSRServerPlugin() : new VueSSRClientPlugin()]
   }),
 
   chainWebpack: config => {
+    // 关闭vue-loader中默认的服务器端渲染函数
     config.module
       .rule('vue')
       .use('vue-loader')

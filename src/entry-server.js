@@ -12,16 +12,17 @@ export default context => {
     // 等到 router 将可能的异步组件和钩子函数解析完
     router.onReady(() => {
       const matchedComponents = router.getMatchedComponents();
-      console.log(context.url);
-      console.log(matchedComponents);
+      // console.log('context.url:',context.url);
+      // console.log('matchedComponents',matchedComponents);
       // 匹配不到的路由，执行 reject 函数，并返回 404
       if (!matchedComponents.length) {
         return reject({ code: 404 });
+        // return reject(new Error('no components matched'));
       }
       Promise.all(
         matchedComponents.map(component => {
           if (component.asyncData) {
-            return component.asyncData({ store, route: router.currentRoute });
+            return component.asyncData({ store, route: router.currentRoute, options: {} });
           }
         })
       )

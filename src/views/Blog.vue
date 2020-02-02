@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     async fetch() {
-      const res = await this.$http.get('/article/list');
+      const res = await this.$http.getAction('/article/list');
       this.model = res.data;
       // console.log(this.model);
     }

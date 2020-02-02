@@ -1,6 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@views/Home.vue';
+import Bar from '@views/Bar.vue';
+import Foo from '@views/Foo.vue';
+import Info from '@views/Info.vue';
+import Blog from '@views/Blog.vue';
 
 Vue.use(Router);
 export function createRouter() {
@@ -11,12 +15,12 @@ export function createRouter() {
       {
         path: '/bar',
         name: 'bar',
-        component: () => import('@views/Bar.vue')
+        component: Bar
       },
       {
         path: '/foo',
         name: 'foo',
-        component: () => import('@views/Foo.vue')
+        component: Foo
       },
       {
         path: '/',
@@ -26,12 +30,12 @@ export function createRouter() {
           {
             path: '/',
             name: 'info',
-            component: () => import('@views/Info.vue')
+            component: Info
           },
           {
             path: 'blog',
             name: 'blog',
-            component: () => import('@views/Blog.vue')
+            component: Blog
           }
         ]
       }

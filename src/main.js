@@ -7,8 +7,10 @@ import './assets/iconfont/iconfont.css';
 
 Vue.config.productionTip = false;
 
-import http from './http.js';
-Vue.prototype.$http = http;
+// import http from './http.js';
+// Vue.prototype.$http = http;
+import { postAction, putAction, getAction, deleteAction, httpAction } from '@/api/manage.js';
+Vue.prototype.$http = { postAction, putAction, getAction, deleteAction, httpAction };
 
 export function createApp() {
   const router = createRouter();
@@ -26,4 +28,3 @@ export function createApp() {
 //   store,
 //   render: h => h(App)
 // }).$mount('#app');
-

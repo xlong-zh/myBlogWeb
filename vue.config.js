@@ -3,6 +3,7 @@ const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 const nodeExternals = require('webpack-node-externals'); //忽略node_modules文件夹中的所有模块
 // const merge = require('lodash.merge');
+// const merge = require('lodash.merge');
 const TARGET_NODE = process.env.WEBPACK_TARGET === 'node';
 const target = TARGET_NODE ? 'server' : 'client'; //根据环境变量来指向入口
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -12,15 +13,17 @@ function resolve(dir) {
 
 // vue.config.js
 module.exports = {
+  //基本路径
+  publicPath: process.env.NODE_ENV !== 'production' ? 'http://127.0.0.1:8080' : './',
+  // publicPath: './',
   // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构建。
   // productionSourceMap: false,
-  //基本路径
-  publicPath: './',
   // 输出文件目录
   outputDir: 'dist',
   css: {
     extract: process.env.NODE_ENV === 'production',
     sourceMap: true
+    //向 CSS 相关的 loader 传递选项(支持 css-loader postcss-loader sass-loader less-loader stylus-loader)
   },
   configureWebpack: () => ({
     // 将 entry 指向应用程序的 server / client 文件
@@ -65,6 +68,10 @@ module.exports = {
         options.optimizeSSR = false;
         return options;
       });
+    // 热更新bug
+    // if (TARGET_NODE) {
+    //   config.plugins.delete('hmr');
+    // }
     // config.module
     //   .rule('images')
     //   .use('url-loader')
@@ -88,21 +95,23 @@ module.exports = {
       .set('@views', resolve('src/views'));
   },
 
-  // devServer: {
-  //   port: 8088
-  //   // proxy: {
+  devServer: {
+    historyApiFallback: true,
+    headers: { 'Access-Control-Allow-Origin': '*' }
+    // port: 8088
+    // proxy: {
 
-  //   //   '/jeecg-boot': {
-  //   //     target: 'http://127.0.0.1:8888', //请求本地 需要jeecg-boot后台项目
-  //   //     // target: 'http://192.168.1.11:8888', //请求局域网 需要局域网后台
-  //   //     // target: 'http://192.168.1.244:8888', //请求局域网 需要局域网后台(线上)
-  //   //     ws: false,
-  //   //     changeOrigin: true
-  //   //     // pathRewrite: {
-  //   //     //   '^/jeecg-boot': '/'  //默认所有请求都加了jeecg-boot前缀，需要去掉
-  //   //     // }
-  //   //   }
-  //   // }
-  // },
+    //   '/jeecg-boot': {
+    //     target: 'http://127.0.0.1:8888', //请求本地 需要jeecg-boot后台项目
+    //     // target: 'http://192.168.1.11:8888', //请求局域网 需要局域网后台
+    //     // target: 'http://192.168.1.244:8888', //请求局域网 需要局域网后台(线上)
+    //     ws: false,
+    //     changeOrigin: true
+    //     // pathRewrite: {
+    //     //   '^/jeecg-boot': '/'  //默认所有请求都加了jeecg-boot前缀，需要去掉
+    //     // }
+    //   }
+    // }
+  },
   lintOnSave: false
 };

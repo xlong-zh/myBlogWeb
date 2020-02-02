@@ -16,8 +16,8 @@ export default context => {
       // console.log('matchedComponents',matchedComponents);
       // 匹配不到的路由，执行 reject 函数，并返回 404
       if (!matchedComponents.length) {
-        return reject({ code: 404 });
-        // return reject(new Error('no components matched'));
+        // return reject({ code: 404 });
+        return reject(new Error('no components matched'));
       }
       Promise.all(
         matchedComponents.map(component => {

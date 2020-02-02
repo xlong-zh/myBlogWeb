@@ -8,11 +8,11 @@
       </h3>
     </div>
     <div class="bg">
-      <img class="w-100 h-100" :src="image[2]" alt />
+      <img class="w-100 h-100" src="@/assets/home_bg.jpg" alt />
     </div>
     <div class="waiting">
       <transition name="fade">
-        <router-view></router-view>
+        <router-view style="box-shadow: 0px 0px 20px #999;"></router-view>
       </transition>
     </div>
     <div class="footer w-100 py-30 d-flex jc-around">
@@ -27,6 +27,8 @@
         <router-link to="/" tag="span" class="mx-5 text-grey">MongoDB</router-link>
       </div>
     </div>
+    <router-link to="/bar">Goto Bar</router-link>
+    <router-link to="/foo">Goto Foo</router-link>
   </div>
 </template>
 
@@ -52,6 +54,7 @@ export default {
 </script>
 <style lang="scss">
 .home {
+  // background-color: #0e080c;
   .fade-enter-active {
     transition: all 0.3s;
   }
@@ -59,11 +62,15 @@ export default {
     transition: all 0.3s;
   }
   .fade-enter {
-    transform: translateX(100%);
+    transform: translateX(150%);
     position: absolute;
   }
+  // .fade-leave {
+  //   opacity: 1;
+  // }
   .fade-leave-to {
-    transform: translateX(-100%);
+    transform: translateX(-150%);
+    // opacity: 0;
     position: absolute;
   }
   .navtop {
@@ -84,7 +91,6 @@ export default {
     width: 1300px;
     min-height: 300px;
     margin: 0 auto -130px auto;
-    box-shadow: 0px 0px 20px #999;
   }
   .footer {
     margin: 0 auto;

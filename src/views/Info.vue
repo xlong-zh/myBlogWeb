@@ -2,7 +2,7 @@
   <div class="content bg-white">
     <div class="info d-flex flex-column ai-center jc-between">
       <div class="avatar mb-15">
-        <img class="w-100" :src="image[4]" alt />
+        <img class="w-100" :src="image[1]" alt />
       </div>
       <div class="name fs-20 mb-25">XLong-Zh</div>
       <div class="hobby mb-20">Coder</div>

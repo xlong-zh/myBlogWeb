@@ -44,7 +44,7 @@ router.get('*', async (ctx, next) => {
   };
   // 将 context 数据渲染为 HTML
   const html = await renderToString(context);
-  console.log('html:', html);
+  // console.log('html:', html);
   ctx.body = html;
 });
 module.exports = router;

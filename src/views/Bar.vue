@@ -16,7 +16,7 @@ export default {
 
   methods: {
     onHandleClick() {
-      alert('bar');
+      console.log('bar');
     }
   },
 

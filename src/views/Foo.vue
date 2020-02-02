@@ -8,10 +8,10 @@
 export default {
   methods: {
     onHandleClick() {
-      alert('foo');
+      console.log('foo');
     }
-  },
-}
+  }
+};
 </script>
 
 <style>

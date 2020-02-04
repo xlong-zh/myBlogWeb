@@ -1,4 +1,5 @@
 <template>
+  <!-- <div class="home" :style="bgData" v-if="image"> -->
   <div class="home" v-if="image">
     <div class="navtop text-primary4 w-100 py-15 d-flex jc-around">
       <h2 class="zxlname pointer">XLong-Zh's BLOG</h2>
@@ -36,7 +37,11 @@
 export default {
   data() {
     return {
-      image: []
+      image: [],
+      bgData: {
+        backgroundImage: 'url(' + require('@assets/bg-bm.jpg') + ')',
+        backgroundRepeat: 'repeat'
+      }
     };
   },
   name: 'home',
@@ -54,7 +59,7 @@ export default {
 </script>
 <style lang="scss">
 .home {
-  // background-color: #0e080c;
+  // background: url('@/assets/bg-bm.jpg') repeat;
   .fade-enter-active {
     transition: all 0.3s;
   }

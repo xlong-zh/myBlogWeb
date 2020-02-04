@@ -2,7 +2,7 @@
   <div class="blog py-50 bg-white">
     <div v-for="(item, i) in model" :key="i">
       <Art :essay="item">qweqwzxa</Art>
-      <div class="border-bottom" style="width:500px;margin:0 auto;"></div>
+      <div class="border-bottom" style="width:630px;margin:0 auto;"></div>
     </div>
   </div>
 </template>

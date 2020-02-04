@@ -26,9 +26,10 @@ export function createRouter() {
         path: '/',
         // name: 'home',
         component: Home,
+        redirect: '/home',
         children: [
           {
-            path: '/',
+            path: '/home',
             name: 'info',
             component: Info
           },

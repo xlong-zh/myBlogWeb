@@ -9,8 +9,12 @@ Vue.config.productionTip = false;
 
 // import http from './http.js';
 // Vue.prototype.$http = http;
+import { dragPermission, focusPermission } from '@/utils/hasPermission';
 import { postAction, putAction, getAction, deleteAction, httpAction } from '@/api/manage.js';
 Vue.prototype.$http = { postAction, putAction, getAction, deleteAction, httpAction };
+
+Vue.use(dragPermission);
+Vue.use(focusPermission);
 
 export function createApp() {
   const router = createRouter();

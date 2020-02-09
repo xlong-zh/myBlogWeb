@@ -7,40 +7,75 @@
       <div class="name fs-20 mb-25">XLong-Zh</div>
       <div class="hobby mb-20">Coder</div>
       <div class="contact mb-30 d-flex jc-between">
-        <router-link to="/" tag="div">
+        <div @click="goHref('https://github.com/xlong-zh')">
           <i class="mr-50 fs-24 iconfont icongit pointer"></i>
-        </router-link>
-        <router-link to="/" tag="div">
+        </div>
+        <div @click="visible = true">
           <i class="mr-50 fs-24 iconfont iconmail1 pointer"></i>
-        </router-link>
-        <router-link to="/" tag="div">
+        </div>
+        <div @click="goHref('https://github.com/xlong-zh')">
           <i class="fs-24 iconfont iconshezhi pointer"></i>
-        </router-link>
+        </div>
       </div>
-      <p class="fs-16 text-grey">obsessive,love coding</p>
+      <p class="fs-16 text-grey">co cd coding</p>
     </div>
+    <dialogDrag
+      class="dialog"
+      :title="title"
+      width="460"
+      :visible.sync="visible"
+      @cancel="handleCancel"
+      :showOkButton="false"
+      canceltext="关闭"
+    >
+      <div class="info-email">
+        <div>
+          <span style="display:inline-block;width:80px;text-align: right;padding-right: 2px;color:#333333;"
+            >Outlook：</span
+          >xlong-Zh@outlook.com
+        </div>
+        <div>
+          <span style="display:inline-block;width:80px;text-align: right;padding-right: 2px;color:#333333;">QQ：</span
+          >907737948@qq.com
+        </div>
+      </div>
+    </dialogDrag>
   </div>
 </template>
 
 <script>
+import dialogDrag from '@comp/drag/dialogDrag';
 export default {
+  components: {
+    dialogDrag
+  },
   data() {
     return {
-      image: []
+      image: [],
+      title: '邮箱',
+      visible: false
     };
-  },
-  methods: {
-    async fetch() {
-      const res = await this.$http.getAction('/image/list');
-      this.image = res.data.map(v => v.img);
-    }
   },
   created() {
     this.fetch();
+  },
+  methods: {
+    //新窗口打开
+    goHref(addr) {
+      window.open(addr);
+    },
+    async fetch() {
+      const res = await this.$http.getAction('/image/list');
+      this.image = res.data.map(v => v.img);
+    },
+    handleCancel() {
+      // this.$emit('close');
+      this.visible = false;
+    }
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .content {
   .info {
     margin: 0 auto;
@@ -51,8 +86,15 @@ export default {
       height: 200px;
       border-radius: 50%;
       overflow: hidden;
-      z-index: 100;
+      z-index: 9;
     }
+  }
+  .info-email {
+    font-size: 16px;
+    margin-top: 5px;
+    line-height: 1.8;
+    color: #666666;
+    padding-left: 10px;
   }
 }
 </style>

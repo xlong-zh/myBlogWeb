@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Art from '../components/Art.vue';
+import Art from '@comp/Art.vue';
 export default {
   data() {
     return {
@@ -30,4 +30,4 @@ export default {
   }
 };
 </script>
-<style lang="scss"></style>
+<style lang="scss" scoped></style>

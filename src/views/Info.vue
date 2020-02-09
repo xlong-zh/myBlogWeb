@@ -1,8 +1,8 @@
 <template>
   <div class="content bg-white">
     <div class="info d-flex flex-column ai-center jc-between">
-      <div class="avatar mb-15">
-        <img class="w-100" :src="image[1]" alt />
+      <div class="avatar mb-20">
+        <img class="w-100" src="@/assets/avatar.png" alt />
       </div>
       <div class="name fs-20 mb-25">XLong-Zh</div>
       <div class="hobby mb-20">Coder</div>
@@ -51,13 +51,13 @@ export default {
   },
   data() {
     return {
-      image: [],
+      // image: [],
       title: '邮箱',
       visible: false
     };
   },
   created() {
-    this.fetch();
+    // this.fetch();
   },
   methods: {
     //新窗口打开
@@ -80,12 +80,16 @@ export default {
   .info {
     margin: 0 auto;
     position: relative;
-    top: -100px;
+    padding: 80px 0 100px;
     .avatar {
       width: 200px;
       height: 200px;
-      border-radius: 50%;
-      overflow: hidden;
+      // border-radius: 50%;
+      // overflow: hidden;
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 9;
     }
   }

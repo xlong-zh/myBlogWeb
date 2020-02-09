@@ -5,6 +5,7 @@ import Bar from '@views/Bar.vue';
 import Foo from '@views/Foo.vue';
 import Info from '@views/Info.vue';
 import Blog from '@views/Blog.vue';
+import ArtDetail from '@views/ArtDetail.vue';
 
 Vue.use(Router);
 export function createRouter() {
@@ -37,6 +38,11 @@ export function createRouter() {
             path: 'blog',
             name: 'blog',
             component: Blog
+          },
+          {
+            path: 'ArtDetail',
+            name: 'ArtDetail',
+            component: ArtDetail
           }
         ]
       }

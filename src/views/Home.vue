@@ -37,11 +37,11 @@
 export default {
   data() {
     return {
-      image: [],
-      bgData: {
-        backgroundImage: 'url(' + require('@assets/bg-bm.jpg') + ')',
-        backgroundRepeat: 'repeat'
-      }
+      image: []
+      // bgData: {
+      //   backgroundImage: 'url(' + require('@assets/bg-bm.jpg') + ')',
+      //   backgroundRepeat: 'repeat'
+      // }
     };
   },
   name: 'home',

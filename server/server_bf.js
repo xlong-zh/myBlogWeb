@@ -55,6 +55,6 @@ app.use(koaStatic(path.resolve(__dirname, '../dist')));
 
 app.use(backendRouter.routes()).use(backendRouter.allowedMethods());
 
-app.listen(3001, () => {
-  console.log('服务器端渲染地址： http://localhost:3001');
+app.listen(3000, () => {
+  console.log('服务器端渲染地址： http://localhost:3000');
 });

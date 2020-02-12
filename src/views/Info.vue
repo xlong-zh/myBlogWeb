@@ -13,7 +13,7 @@
         <div @click="visible = true">
           <i class="mr-50 fs-24 iconfont iconmail1 pointer"></i>
         </div>
-        <div @click="goHref('https://github.com/xlong-zh')">
+        <div @click="goHref('http://zhxil.live/admin/index.html')">
           <i class="fs-24 iconfont iconshezhi pointer"></i>
         </div>
       </div>

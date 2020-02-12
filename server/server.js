@@ -14,7 +14,7 @@ app.use(router.routes()).use(router.allowedMethods());
 app.use(koaMount('/dist', koaStatic(resolve('../dist'))));
 app.use(koaMount('/public', koaStatic(resolve('../public'))));
 
-app.listen(3001, () => {
-  console.log('服务器端渲染地址： http://localhost:3001');
+app.listen(3000, () => {
+  console.log('服务器端渲染地址： http://localhost:3000');
 });
 module.exports = app;

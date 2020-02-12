@@ -34,10 +34,10 @@ function renderToString(context) {
 router.get('*', async (ctx, next) => {
   const url = ctx.url;
   if (url.includes('.')) {
-    console.log(`proxy ${url}`);
+    // console.log(`proxy ${url}`);
     return await send(ctx, url, { root: path.resolve(__dirname, '../dist') });
   }
-  ctx.res.setHeader('Content-Type', 'text/html');
+  ctx.res.setHeader('Content-Type', 'text/html;charset=utf-8');
   const context = {
     title: 'ssr test',
     url

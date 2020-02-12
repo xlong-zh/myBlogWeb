@@ -1,7 +1,8 @@
 import axios from 'axios';
 import Vue from 'vue';
 const http = axios.create({
-  baseURL: 'http://localhost:4000/web/api'
+  // baseURL: 'http://localhost:4000/web/api'
+  baseURL: 'http://zhxil.live:4000/web/api'
 });
 http.interceptors.request.use(
   config => {

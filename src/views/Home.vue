@@ -28,8 +28,8 @@
         <span @click="goHref('https://www.mongodb.com')" class="mx-5 text-grey">MongoDB</span>
       </div>
     </div>
-    <router-link to="/bar">Goto Bar</router-link>
-    <router-link to="/foo">Goto Foo</router-link>
+    <!-- <router-link to="/bar">Goto Bar</router-link>
+    <router-link to="/foo">Goto Foo</router-link> -->
   </div>
 </template>
 
